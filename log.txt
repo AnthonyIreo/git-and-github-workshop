@@ -1,0 +1,78 @@
+1.without a new file, then I created a new one, done.
+(base) ➜  git-and-github-workshop git:(main) git add .
+(base) ➜  git-and-github-workshop git:(main) git commit -m "meaningful msg"
+On branch main
+
+Initial commit
+
+nothing to commit (create/copy files and use "git add" to track)
+(base) ➜  git-and-github-workshop git:(main) git push
+error: src refspec refs/heads/main does not match any
+error: failed to push some refs to 'github.com:AnthonyIreo/git-and-github-workshop.git'
+
+2.not locally
+(base) ➜  git-and-github-workshop git:(main) git add .
+(base) ➜  git-and-github-workshop git:(main) ✗ git commit -m "meaningful msg"
+[main (root-commit) 5d0491b] meaningful msg
+ 1 file changed, 32 insertions(+)
+ create mode 100644 test.html
+(base) ➜  git-and-github-workshop git:(main) git push
+To github.com:AnthonyIreo/git-and-github-workshop.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'github.com:AnthonyIreo/git-and-github-workshop.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+Then 
+
+(base) ➜  git-and-github-workshop git:(main) git status
+On branch main
+Your branch is based on 'origin/main', but the upstream is gone.
+  (use "git branch --unset-upstream" to fixup)
+
+nothing to commit, working tree clean
+
+(base) ➜  git-and-github-workshop git:(main) git pull
+remote: Enumerating objects: 6, done.
+remote: Counting objects: 100% (6/6), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 6 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (6/6), 1.21 KiB | 207.00 KiB/s, done.
+From github.com:AnthonyIreo/git-and-github-workshop
+ * [new branch]      main       -> origin/main
+hint: Pulling without specifying how to reconcile divergent branches is
+hint: discouraged. You can squelch this message by running one of the following
+hint: commands sometime before your next pull:
+hint:
+hint:   git config pull.rebase false  # merge (the default strategy)
+hint:   git config pull.rebase true   # rebase
+hint:   git config pull.ff only       # fast-forward only
+hint:
+hint: You can replace "git config" with "git config --global" to set a default
+hint: preference for all repositories. You can also pass --rebase, --no-rebase,
+hint: or --ff-only on the command line to override the configured default per
+hint: invocation.
+fatal: refusing to merge unrelated histories
+
+Find a new branch
+Try
+(base) ➜  git-and-github-workshop git:(main) git reset
+(base) ➜  git-and-github-workshop git:(main) git pull
+
+Then
+
+(base) ➜  git-and-github-workshop git:(main) git config pull.rebase true
+(base) ➜  git-and-github-workshop git:(main) git pull
+Successfully rebased and updated refs/heads/main.
+(base) ➜  git-and-github-workshop git:(main) git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+(base) ➜  git-and-github-workshop git:(main) git push
+
+done
